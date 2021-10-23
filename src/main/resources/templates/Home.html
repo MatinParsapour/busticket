@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-color: beige;
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-attachment: fixed;
+            margin: 0px;
+        }
+
+        .header {
+            display: flex;
+            align-items: center;
+            background-color: rgb(128, 168, 199, 60%);
+        }
+
+        .title {
+            font-family: Arial, Helvetica, sans-serif;
+            margin-left: 50%;
+            width: 100%;
+        }
+
+        .history {
+            height: 33%;
+            width: 33%;
+        }
+
+        .home {
+            height: 50%;
+            width: 50%;
+        }
+
+        .searchTicket {
+            display: flex;
+            display: flex;
+            align-self: center;
+            margin-top: 2%;
+            background-color: rgb(128, 168, 199, 60%);
+            width: 70%;
+            height: 30px;
+            justify-content: space-between;
+        }
+
+        .inputSize {
+            width: 20%;
+            border-radius: 5px 5px;
+        }
+
+        .signUpOrLogIn:link {
+            color: white;
+            text-decoration: none;
+        }
+
+        .signUpOrLogIn:visited {
+            color: purple;
+            text-decoration: dashed;
+        }
+
+        .signUpOrLogIn:hover {
+            color: green;
+        }
+
+        .signUpOrLogIn:active {
+            color: black;
+            text-decoration: underline;
+        }
+
+        .ticket {
+            margin-top: 5%;
+            display: flex;
+            align-self: center;
+            border-radius: 5px 5px;
+            width: 95%;
+            height: 150px;
+            background-color: rgb(10, 10, 68, 80%);
+            color: white;
+            flex-direction: column;
+            flex-wrap: wrap;
+        }
+
+        .buyTicket {
+            width: 200px;
+        }
+
+        .sex{
+            font-size: 20px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #customer-information {
+            position: fixed;
+            top: 50%;
+            left: 35%;
+            transform: translate(-50%, -50%);
+            height: 250px;
+            width: 70%;
+            background-color: rgba(85, 18, 161);
+            display: none;
+            margin-left: 15%;
+            margin-top: 5%;
+            border-radius: 5px 5px;
+        }
+        .mainFormToBuyTicket{
+            width: 60%;
+        }
+
+        .customerName{
+            width: 100%;
+            box-sizing: border-box;
+            -webkit-box-sizing:border-box;
+            -moz-box-sizing: border-box;
+        }
+        .cInformation{
+            margin-top: 10%;
+            width: 100%;
+        }
+        table,th,td{
+            border: 1px solid rgb(0, 0, 0);
+            border-collapse: collapse;
+        }
+
+        table,th,td{
+            padding: 5px;
+            text-align: left;
+        }
+
+        .buyTicketForm{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+        .buttons{
+            display: flex;
+            justify-content: space-around;
+        }
+        .button{
+            border-radius: 5px 5px;
+            margin-top:10% ;
+            width: 40%;
+            height: 50px;
+        }
+
+        .greenButton{
+            background-color: green;
+        }
+
+        .redButton{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <p class="title">BusTicket</p>
+    <a href="/history">History</a>
+    <a class="signUpOrLogIn"
+       href="file:///D:/JavaProgrammingPractices/Front-Ent/BusTicket/signUpOrLogInPage.html">SignUp/LogIn</a>
+</div>
+<form class="searchTicket" action="searchTicket">
+    <input class="inputSize" type="text" placeholder="Origin">
+    <input class="inputSize" type="text" placeholder="Destination">
+    <input class="inputSize" type="date" placeholder="date">
+    <input class="inputSize" type="submit" value="Search">
+</form>
+<div id="customer-information">
+    <div class="buyTicketForm">
+        <form action="buy-ticket" class="mainFormToBuyTicket">
+            <table class="cInformation">
+                <thead>
+                <th>Name</th>
+                <th>Gender</th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td><input class="customerName" type="text" placeholder="Name" required></td>
+                    <td>
+                        <div class="sex">
+                            <label for="male">male</label>
+                            <input id="male" name="sex" type="radio" value="male">
+                            <label for="female">female</label>
+                            <input id="female" name="sex" type="radio" value="female">
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+            <div class="buttons">
+                <input class="button redButton" type="button" value="Cancel" onclick="closeForm()">
+                <input class="button greenButton" type="submit" value="Buy">
+            </div>
+        </form>
+    </div>
+</div>
+<div class="ticket">
+    <p>Origin : Isfahan</p>
+    <p>Destination : Tehran</p>
+    <p>Departure date : 23/4/1400</p>
+    <p>Departure time : 18:30</p>
+    <p>Ticket id : 78349</p>
+    <input class="buyTicket" type="submit" value="Buy" onclick="openForm()">
+</div>
+
+<script>function openForm(){
+    document.getElementById("customer-information").style.display = "block";
+}
+
+function closeForm(){
+    document.getElementById("customer-information").style.display = "none";
+}</script>
+</body>
+</html>
