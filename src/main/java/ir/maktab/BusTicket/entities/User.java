@@ -11,7 +11,6 @@ import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-import java.time.LocalDateTime;
 
 @Entity
 @Inheritance
@@ -48,17 +47,15 @@ public class User extends BaseEntity<Long>{
     @NotBlank(message = "password is mandatory!")
     private String password;
 
+    @Column(name = NATIONAL_CODE,nullable = false)
+    private long nationalCode;
+
     @Column(name = EMAIL,nullable = false)
     @NotBlank(message = "email is mandatory!")
     private String email;
 
-    @Column(name = NATIONAL_CODE,nullable = false)
-    @NotBlank(message = "national code is mandatory!")
-    private long nationalCode;
-
     @Column(name = BIRTHDAY,nullable = false)
-    @NotBlank(message = "birthday is mandatory!")
-    private LocalDateTime birthday;
+    private String birthday;
 
     @Column(name = GENDER,nullable = false)
     @NotBlank(message = "gender is mandatory!")
