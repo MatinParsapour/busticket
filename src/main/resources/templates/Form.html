@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html" lang="">
 <head>
     <meta charset="UTF-8">
     <title>Form</title>
@@ -154,30 +154,35 @@
   <div class="box alignItems">
     <p class="boxFont">Sign up</p>
     <div class="Form overflow">
-      <form action="file:///D:/JavaProgrammingPractices/Front-Ent/BusTicket/signUpOrLogInPage.html" class="inputs formContent">
+      <form action="#" th:action="@{/add-customer}" th:object="${customer}" method="post" class="inputs formContent">
         <br>
         <br>
         <br>
         <br>
         <br>
-        <input class="input marginTop signUpInput" type="text" placeholder="Firstname" required>
-        <input class="input marginTop signUpInput" type="text" placeholder="Lastname" required>
-        <input class="input marginTop signUpInput" type="text" placeholder="Username" required>
-        <input class="active input marginTop signUpInput" type="password" id="password" placeholder="Password" onkeyup="checkPassword()" required>
+        <input class="input marginTop signUpInput" type="text" th:field="*{firstName}" name="firstName" placeholder="Firstname" required>
+        <span th:if="${#fields.hasErrors('firstName')}" th:errors = "*{firstName}"></span>
+        <input class="input marginTop signUpInput" th:field="*{lastName}" type="text" placeholder="Lastname" required>
+        <span th:if="${#fields.hasErrors('lastName')}" th:errors = "*{lastName}"></span>
+        <input class="input marginTop signUpInput" th:field="*{userName}" type="text" placeholder="Username" required>
+        <span th:if="${#fields.hasErrors('userName')}" th:errors = "*{userName}"></span>
+        <input class="active input marginTop signUpInput" th:field="*{password}" type="password" id="password" placeholder="Password" onkeyup="checkPassword()" required>
+        <span th:if="${#fields.hasErrors('password')}" th:errors = "*{password}"></span>
         <i id="icon1" class="fa fa-eye-slash"></i>
         <span id="passwordValidation"></span>
         <input class="active input marginTop signUpInput" type="password" id="repeatPassword" placeholder="Repeat password" onkeyup="validatePasswords()" required>
         <i id="icon2" class="fa fa-eye-slash"></i>
         <span id="repeatPasswordValidation"></span>
-        <input id="nationalCode" class="input marginTop signUpInput" type="number" placeholder="National code" onkeyup="countNumbers()" required>
+        <input id="nationalCode" class="input marginTop signUpInput" th:field="*{nationalCode}" type="number" placeholder="National code" onkeyup="countNumbers()" required>
         <span id="countNationalCode"></span>
-        <input class="input marginTop signUpInput" type="email" placeholder="Email" required>
-        <input  class="input marginTop signUpInput" type="date" placeholder="Birth day" required>
+        <input class="input marginTop signUpInput" type="email" th:field="*{email}" placeholder="Email" required>
+        <span th:if="${#fields.hasErrors('email')}" th:errors = "*{email}"></span>
+        <input  class="input marginTop signUpInput" type="date" th:field="*{birthday}" placeholder="Birth day" required>
         <div class="sex">
           <label for="male">male</label>
-          <input id = "male" name = "sex" type="radio" value = "male">
+          <input id = "male" th:field="*{gender}" name = "sex" type="radio" value = "male">
           <label for="female">female</label>
-          <input id = "female" name = "sex" type = "radio" value = "female">
+          <input id = "female" th:field="*{gender}" name = "sex" type = "radio" value = "female">
         </div>
         <input class="signUp marginTop signUpInput" type="submit" value="Sign up">
       </form>
@@ -186,10 +191,10 @@
   <div class="box alignItems">
     <p class="boxFont">Log in</p>
     <div class="Form">
-      <form action="logIn">
+      <form action="#" th:action="@{/validate-customer}" th:object="${customer}" method="post">
         <div class="inputs logInHeight">
-          <input class="input logInInput" type="text" placeholder="Username" required>
-          <input class="active input logInInput" type="password" id="passwordid" placeholder="Password" required>
+          <input class="input logInInput" type="text" th:field="*{userName}" placeholder="Username" required>
+          <input class="active input logInInput" type="password" th:field="*{password}" id="passwordid" placeholder="Password" required>
           <i id="icon3" class="fa fa-eye-slash"></i>
           <input class="signUp" type="submit" value="Log in">
         </div>
@@ -209,7 +214,7 @@
   icon3.onclick = eye();
   function eye() {
 
-    if(inputPass2.className == 'active') {
+    if(inputPass2.className === 'active') {
       inputPass2.setAttribute('type', 'text');
       inputPass2.className = '';
 
