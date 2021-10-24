@@ -28,13 +28,9 @@
         }
 
         .history {
+            margin-right: 2%;
             height: 33%;
             width: 33%;
-        }
-
-        .home {
-            height: 50%;
-            width: 50%;
         }
 
         .searchTicket {
@@ -89,7 +85,7 @@
             width: 200px;
         }
 
-        .sex{
+        .sex {
             font-size: 20px;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
@@ -107,51 +103,56 @@
             margin-top: 5%;
             border-radius: 5px 5px;
         }
-        .mainFormToBuyTicket{
+
+        .mainFormToBuyTicket {
             width: 60%;
         }
 
-        .customerName{
+        .customerName {
             width: 100%;
             box-sizing: border-box;
-            -webkit-box-sizing:border-box;
+            -webkit-box-sizing: border-box;
             -moz-box-sizing: border-box;
         }
-        .cInformation{
+
+        .cInformation {
             margin-top: 10%;
             width: 100%;
         }
-        table,th,td{
+
+        table, th, td {
             border: 1px solid rgb(0, 0, 0);
             border-collapse: collapse;
         }
 
-        table,th,td{
+        table, th, td {
             padding: 5px;
             text-align: left;
         }
 
-        .buyTicketForm{
+        .buyTicketForm {
             width: 100%;
             display: flex;
             justify-content: center;
         }
-        .buttons{
+
+        .buttons {
             display: flex;
             justify-content: space-around;
         }
-        .button{
+
+        .button {
             border-radius: 5px 5px;
-            margin-top:10% ;
+            margin-top: 10%;
             width: 40%;
             height: 50px;
         }
 
-        .greenButton{
+        .greenButton {
             background-color: green;
         }
 
-        .redButton{
+        .redButton {
             background-color: red;
         }
     </style>
@@ -159,9 +160,15 @@
 <body>
 <div class="header">
     <p class="title">BusTicket</p>
-    <a href="/history">History</a>
-    <a class="signUpOrLogIn"
-       href="/form">SignUp/LogIn</a>
+    <a class="history" href="/history">History</a>
+    <div th:switch="${customer}">
+        <div th:case="null">
+            <a class="signUpOrLogIn" href="/form">SignUp/LogIn</a>
+        </div>
+        <div th:case="*">
+            <p th:text="${customer.getUserName()}"></p>
+        </div>
+    </div>
 </div>
 <form class="searchTicket" action="searchTicket">
     <input class="inputSize" type="text" placeholder="Origin">
@@ -207,11 +214,11 @@
     <input class="buyTicket" type="submit" value="Buy" onclick="openForm()">
 </div>
 
-<script>function openForm(){
+<script>function openForm() {
     document.getElementById("customer-information").style.display = "block";
 }
 
-function closeForm(){
+function closeForm() {
     document.getElementById("customer-information").style.display = "none";
 }</script>
 </body>
