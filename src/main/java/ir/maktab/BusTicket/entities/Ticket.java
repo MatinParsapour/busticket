@@ -31,8 +31,8 @@ public class Ticket extends BaseEntity<Long>{
     @Column(name = DESTINATION)
     private String destination;
     @Column(name = DEPARTURE_DATE)
-    private LocalDate departureDate;
+    private String departureDate;
     @Column(name = DEPARTURE_TIME)
-    private LocalTime departureTime;
+    private String departureTime;
 
 }
