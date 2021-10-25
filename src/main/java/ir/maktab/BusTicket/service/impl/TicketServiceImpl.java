@@ -15,11 +15,6 @@ public class TicketServiceImpl implements TicketService {
     private TicketRepository ticketRepository;
 
     @Override
-    public void addTicket(Ticket ticket) {
-        ticketRepository.save(ticket);
-    }
-
-    @Override
     public List<Ticket> getAllTickets() {
         return ticketRepository.findAllByOrderByDepartureDateAsc();
     }
