@@ -39,7 +39,7 @@ public class User extends BaseEntity<Long>{
     @NotBlank(message = "lastname is mandatory!")
     private String lastName;
 
-    @Column(name = USER_NAME,nullable = false)
+    @Column(name = USER_NAME,nullable = false,unique = true)
     @NotBlank(message = "username is mandatory!")
     private String userName;
 
