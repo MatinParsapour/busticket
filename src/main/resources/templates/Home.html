@@ -8,7 +8,7 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            background-color: beige;
+            background-image: linear-gradient(rgb(74, 15, 82),rgb(30, 24, 105),rgb(30, 24, 105),rgb(74, 15, 82));
             background-repeat: no-repeat;
             background-size: 100% 100%;
             background-attachment: fixed;
@@ -205,12 +205,17 @@
         </form>
     </div>
 </div>
-<div class="ticket">
-    <p>Origin : Isfahan</p>
-    <p>Destination : Tehran</p>
-    <p>Departure date : 23/4/1400</p>
-    <p>Departure time : 18:30</p>
-    <p>Ticket id : 78349</p>
+<div class="ticket" th:each="ticket : ${tickets}">
+    <span>Origin : </span>
+    <p th:text="${ticket.origin}"></p>
+    <span>Destination : </span>
+    <p th:text="${ticket.destination}"></p>
+    <span>Departure date : </span>
+    <p th:text="${ticket.departureDate}"></p>
+    <span>Departure time : </span>
+    <p th:text="${ticket.departureTime}"></p>
+    <span>Ticket id : </span>
+    <p th:text="${ticket.id}"></p>
     <input class="buyTicket" type="submit" value="Buy" onclick="openForm()">
 </div>
 
