@@ -3,6 +3,7 @@ package ir.maktab.BusTicket.controller;
 
 import ir.maktab.BusTicket.entities.Ticket;
 import ir.maktab.BusTicket.service.TicketService;
+import ir.maktab.BusTicket.util.Security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +20,7 @@ public class MainController {
     @GetMapping("/")
     public String main(Model model){
         List<Ticket> tickets = ticketService.getAllTickets();
+        model.addAttribute("customer", Security.getCustomer());
         model.addAttribute("tickets",tickets);
         return "Home";
     }
