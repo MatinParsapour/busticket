@@ -10,4 +10,6 @@ public interface TicketService {
     List<Ticket> getAllTickets();
 
     Optional<Ticket> getTicket(long id);
+
+    List<Ticket> getSearchedTickets(String origin,String destination,String departureDate);
 }

@@ -24,4 +24,9 @@ public class TicketServiceImpl implements TicketService {
     public Optional<Ticket> getTicket(long id) {
         return ticketRepository.findById(id);
     }
+
+    @Override
+    public List<Ticket> getSearchedTickets(String origin, String destination, String departureDate) {
+        return ticketRepository.findAllByOriginAndDestinationAndDepartureDateOrderByDepartureDateAsc(origin,destination,departureDate);
+    }
 }

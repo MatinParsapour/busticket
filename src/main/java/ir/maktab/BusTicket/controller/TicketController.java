@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -30,5 +31,12 @@ public class TicketController {
             model.addAttribute("history",new History());
             return "CustomerInformation";
         }
+    }
+
+    @GetMapping("/search-ticket")
+    public String searchTickets(Ticket ticket,Model model){
+        List<Ticket> tickets = ticketService.getSearchedTickets(ticket.getOrigin(),ticket.getDestination(),ticket.getDepartureDate());
+        model.addAttribute("tickets",tickets);
+        return "searchedTickets";
     }
 }
