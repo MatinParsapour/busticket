@@ -10,6 +10,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class HistoryController {
@@ -33,9 +37,24 @@ public class HistoryController {
             model.addAttribute("customer",new Customer());
             return "redirect:/form";
         }else{
-            return "redirect:/";
+            List<History> historyList = historyService.getAllCustomerHistory(Security.getCustomer());
+            model.addAttribute("historyList",historyList);
+            return "History";
         }
     }
 
+    @PostMapping("/find-history")
+    public String findHistory(String id, Model model){
+        Optional<History> history = historyService.getCustomerHistory(Long.parseLong(id));
+        Security.setHistory(history.get());
+        model.addAttribute("history",history);
+        return "SeeHistory";
+    }
 
+    @PostMapping("/cancel-ticket")
+    public String cancelTicket(String id){
+        Optional<History> history = historyService.getCustomerHistory(Long.parseLong(id));
+        historyService.deleteHistory(history.get());
+        return "redirect:/";
+    }
 }
