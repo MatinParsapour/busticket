@@ -176,48 +176,20 @@
     <input class="inputSize" type="date" placeholder="date">
     <input class="inputSize" type="submit" value="Search">
 </form>
-<div id="customer-information">
-    <div class="buyTicketForm">
-        <form action="buy-ticket" class="mainFormToBuyTicket">
-            <table class="cInformation">
-                <thead>
-                <th>Name</th>
-                <th>Gender</th>
-                </thead>
-                <tbody>
-                <tr>
-                    <td><input class="customerName" type="text" placeholder="Name" required></td>
-                    <td>
-                        <div class="sex">
-                            <label for="male">male</label>
-                            <input id="male" name="sex" type="radio" value="male">
-                            <label for="female">female</label>
-                            <input id="female" name="sex" type="radio" value="female">
-                        </div>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-            <div class="buttons">
-                <input class="button redButton" type="button" value="Cancel" onclick="closeForm()">
-                <input class="button greenButton" type="submit" value="Buy">
-            </div>
-        </form>
-    </div>
-</div>
-<div class="ticket" th:each="ticket : ${tickets}">
+<form action="#" th:action="@{/buy-tickets}" method="post" class="ticket" th:each="suggestedTicket : ${tickets}">
     <span>Origin : </span>
-    <p th:text="${ticket.origin}"></p>
+    <p th:text="${suggestedTicket.origin}"></p>
     <span>Destination : </span>
-    <p th:text="${ticket.destination}"></p>
+    <p th:text="${suggestedTicket.destination}"></p>
     <span>Departure date : </span>
-    <p th:text="${ticket.departureDate}"></p>
+    <p th:text="${suggestedTicket.departureDate}"></p>
     <span>Departure time : </span>
-    <p th:text="${ticket.departureTime}"></p>
+    <p th:text="${suggestedTicket.departureTime}"></p>
     <span>Ticket id : </span>
-    <p th:text="${ticket.id}"></p>
+    <input type="hidden" name="id" th:value="${suggestedTicket.id}">
+    <p th:text="${suggestedTicket.id}"></p>
     <input class="buyTicket" type="submit" value="Buy" onclick="openForm()">
-</div>
+</form>
 
 <script>function openForm() {
     document.getElementById("customer-information").style.display = "block";
