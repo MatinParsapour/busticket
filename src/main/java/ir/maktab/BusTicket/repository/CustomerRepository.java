@@ -6,4 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface CustomerRepository extends JpaRepository<Customer,Long> {
 
     Customer findByUserNameAndPassword(String username,String password);
+
+    Customer findByUserName(String username);
 }

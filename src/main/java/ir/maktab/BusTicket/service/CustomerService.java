@@ -9,4 +9,6 @@ public interface CustomerService {
     void addCustomer(Customer customer);
 
     Customer getCustomer(Customer customer);
+
+    Customer signedUpCustomer(String username);
 }

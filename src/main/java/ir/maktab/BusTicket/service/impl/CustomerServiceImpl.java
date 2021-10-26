@@ -21,4 +21,9 @@ public class CustomerServiceImpl implements CustomerService {
     public Customer getCustomer(Customer customer) {
         return customerRepository.findByUserNameAndPassword(customer.getUserName(),customer.getPassword());
     }
+
+    @Override
+    public Customer signedUpCustomer(String username) {
+        return customerRepository.findByUserName(username);
+    }
 }

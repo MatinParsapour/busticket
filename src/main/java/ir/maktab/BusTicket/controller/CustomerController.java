@@ -19,18 +19,24 @@ public class CustomerController {
     @PostMapping("/add-customer")
     public String addCustomer(@Valid Customer customer, BindingResult result, Model model){
         if(result.hasErrors()){
-            return "Form";
+            return "redirect:/form";
         }
-        customerService.addCustomer(customer);
-        Security.setCustomer(customer);
-        return "redirect:/";
+        Customer signedUpCustomer = customerService.signedUpCustomer(customer.getUserName());
+        if(signedUpCustomer == null){
+            customerService.addCustomer(customer);
+            Security.setCustomer(customer);
+            return "redirect:/";
+        }else{
+            return "redirect:/form";
+        }
+
     }
 
     @PostMapping("/validate-customer")
     public String checkCustomer(Customer customer,Model model){
         Customer customer1 = customerService.getCustomer(customer);
         if(customer1 == null){
-            return "Form";
+            return "redirect:/form";
         }else{
             Security.setCustomer(customer1);
             return "redirect:/";
