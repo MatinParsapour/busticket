@@ -20,6 +20,7 @@ public class MainController {
     @GetMapping("/")
     public String main(Model model){
         List<Ticket> tickets = ticketService.getAllTickets();
+        model.addAttribute("searchTicket",new Ticket());
         model.addAttribute("customer", Security.getCustomer());
         model.addAttribute("tickets",tickets);
         return "Home";
