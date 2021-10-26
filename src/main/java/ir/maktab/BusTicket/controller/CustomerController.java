@@ -2,6 +2,7 @@ package ir.maktab.BusTicket.controller;
 
 import ir.maktab.BusTicket.entities.Customer;
 import ir.maktab.BusTicket.service.CustomerService;
+import ir.maktab.BusTicket.util.Security;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,8 +22,8 @@ public class CustomerController {
             return "Form";
         }
         customerService.addCustomer(customer);
-        model.addAttribute("customer",customer);
-        return "Home";
+        Security.setCustomer(customer);
+        return "redirect:/";
     }
 
     @PostMapping("/validate-customer")
@@ -31,8 +32,8 @@ public class CustomerController {
         if(customer1 == null){
             return "Form";
         }else{
-            model.addAttribute("customer",customer);
-            return "Home";
+            Security.setCustomer(customer1);
+            return "redirect:/";
         }
     }
 }
