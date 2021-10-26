@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>Tickets</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-image: linear-gradient(rgb(74, 15, 82), rgb(30, 24, 105), rgb(30, 24, 105), rgb(74, 15, 82));
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-attachment: fixed;
+            margin: 0px;
+        }
+
+        table,
+        th,
+        td {
+            text-align: center;
+            color: wheat;
+            border: 3px solid black;
+            border-collapse: collapse;
+        }
+
+        table{
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div th:switch="${tickets}">
+    <div th:case="null">
+        <p>No tickets found</p>
+    </div>
+    <div th:case="*" class="ticketInformation">
+        <table class="table" th:each="ticket : ${tickets}">
+            <thead>
+            <tr>
+                <th colspan="2" style="text-align: left;">Direction : <span th:text="${ticket.origin}"></span> - <span
+                        th:text="${ticket.destination}"></span></th>
+                <th style="text-align: left;">Date : <span th:text="${ticket.departureDate}"></span></th>
+            </tr>
+            <tr>
+                <th>Travel id</th>
+                <th>Travel time</th>
+                <th>Choose</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td th:text="${ticket.id}"></td>
+                <td th:text="${ticket.departureTime}"></td>
+                <td>
+                    <form action="#" th:action="@{/buy-tickets}" method="post">
+                        <input type="hidden" name="id" th:value="${ticket.id}">
+                        <input type="submit" value="Buy">
+                    </form>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
