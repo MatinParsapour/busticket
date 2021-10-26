@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="">
 <head>
     <meta charset="UTF-8">
     <title>Customer information</title>
@@ -101,11 +101,16 @@
         </tbody>
       </table>
       <div class="buttons">
-        <input class="button redButton" type="button" value="Cancel" onclick="closeForm()">
+        <input class="button redButton" type="button" value="Cancel" onclick="toHome()">
         <input class="button greenButton" type="submit" value="Buy">
       </div>
     </form>
   </div>
 </div>
+<script>
+  function toHome(){
+    window.location.href="/";
+  }
+</script>
 </body>
 </html>
