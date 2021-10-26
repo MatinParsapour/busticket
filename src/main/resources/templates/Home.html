@@ -170,24 +170,19 @@
         </div>
     </div>
 </div>
-<form class="searchTicket" action="searchTicket">
-    <input class="inputSize" type="text" placeholder="Origin">
-    <input class="inputSize" type="text" placeholder="Destination">
-    <input class="inputSize" type="date" placeholder="date">
+<form class="searchTicket" action="#" th:action="@{/search-ticket}" th:object="${searchTicket}" method="get">
+    <input class="inputSize" type="text" placeholder="Origin" th:field="*{origin}">
+    <input class="inputSize" type="text" placeholder="Destination" th:field="*{destination}">
+    <input class="inputSize" type="date" placeholder="date" th:field="*{departureDate}">
     <input class="inputSize" type="submit" value="Search">
 </form>
 <form action="#" th:action="@{/buy-tickets}" method="post" class="ticket" th:each="suggestedTicket : ${tickets}">
-    <span>Origin : </span>
-    <p th:text="${suggestedTicket.origin}"></p>
-    <span>Destination : </span>
-    <p th:text="${suggestedTicket.destination}"></p>
-    <span>Departure date : </span>
-    <p th:text="${suggestedTicket.departureDate}"></p>
-    <span>Departure time : </span>
-    <p th:text="${suggestedTicket.departureTime}"></p>
-    <span>Ticket id : </span>
+    <p>Origin : <span th:text="${suggestedTicket.origin}"></span></p>
+    <p>Destination : <span th:text="${suggestedTicket.destination}"></span></p>
+    <p>Departure date : <span th:text="${suggestedTicket.departureDate}"></span></p>
+    <p>Departure time : <span th:text="${suggestedTicket.departureTime}"></span></p>
+    <p>Ticket id : <span th:text="${suggestedTicket.id}"></span></p>
     <input type="hidden" name="id" th:value="${suggestedTicket.id}">
-    <p th:text="${suggestedTicket.id}"></p>
     <input class="buyTicket" type="submit" value="Buy" onclick="openForm()">
 </form>
 
