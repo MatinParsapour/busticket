@@ -30,7 +30,7 @@
         .history {
             margin-right: 2%;
             height: 33%;
-            width: 33%;
+            width: 10%;
         }
 
         .searchTicket {
@@ -55,7 +55,7 @@
         }
 
         .signUpOrLogIn:visited {
-            color: purple;
+            color: #e2e4ec;
             text-decoration: dashed;
         }
 
@@ -67,8 +67,27 @@
             color: black;
             text-decoration: underline;
         }
+        .history:link {
+            color: white;
+            text-decoration: none;
+        }
+
+        .history:visited {
+            color: #e2e4ec;
+            text-decoration: dashed;
+        }
+
+        .history:hover {
+            color: green;
+        }
+
+        .history:active {
+            color: black;
+            text-decoration: underline;
+        }
 
         .ticket {
+            font-size: 20px;
             margin-top: 5%;
             display: flex;
             align-self: center;
@@ -85,11 +104,6 @@
             width: 200px;
         }
 
-        .sex {
-            font-size: 20px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
         #customer-information {
             position: fixed;
             top: 50%;
@@ -104,22 +118,6 @@
             border-radius: 5px 5px;
         }
 
-        .mainFormToBuyTicket {
-            width: 60%;
-        }
-
-        .customerName {
-            width: 100%;
-            box-sizing: border-box;
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-        }
-
-        .cInformation {
-            margin-top: 10%;
-            width: 100%;
-        }
-
         table, th, td {
             border: 1px solid rgb(0, 0, 0);
             border-collapse: collapse;
@@ -128,32 +126,6 @@
         table, th, td {
             padding: 5px;
             text-align: left;
-        }
-
-        .buyTicketForm {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-        }
-
-        .buttons {
-            display: flex;
-            justify-content: space-around;
-        }
-
-        .button {
-            border-radius: 5px 5px;
-            margin-top: 10%;
-            width: 40%;
-            height: 50px;
-        }
-
-        .greenButton {
-            background-color: green;
-        }
-
-        .redButton {
-            background-color: red;
         }
     </style>
 </head>
