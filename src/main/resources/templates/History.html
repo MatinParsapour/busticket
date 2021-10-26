@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>History</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-image: linear-gradient(rgb(74, 15, 82), rgb(30, 24, 105), rgb(30, 24, 105), rgb(74, 15, 82));
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-attachment: fixed;
+            margin: 0px;
+        }
+
+
+        table {
+            width: 100%;
+        }
+
+        table,
+        th,
+        td {
+            font-size: 23px;
+            text-align: center;
+            color: wheat;
+            border: 3px solid black;
+            border-collapse: collapse;
+        }
+
+        th,td{
+            width: 33.33%;
+        }
+    </style>
+</head>
+<body>
+
+<div th:switch="${historyList}">
+    <div th:case="null">
+        <p>There's no history for you</p>
+    </div>
+    <div th:case="*">
+        <table class="table">
+            <thead>
+            <tr>
+                <th colspan="3">List of purchased tickets</th>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <th>Id</th>
+                <th>Choose</th>
+            </tr>
+            </thead>
+            <div class="ticketsInformation" th:each="history : ${historyList}">
+                <tbody>
+                <tr>
+                    <td th:text="*{history.getTicketId().departureDate}"></td>
+                    <td th:text="*{history.id}"></td>
+                    <td>
+                        <form action="#" th:action="@{/find-history}" method="post">
+                            <input type="hidden" name="id" th:value="${history.id}">
+                            <input type="submit" value="See ticket">
+                        </form>
+                    </td>
+                </tr>
+                </tbody>
+            </div>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

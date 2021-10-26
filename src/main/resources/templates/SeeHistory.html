@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>Your history</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background-image: linear-gradient(rgb(74, 15, 82), rgb(30, 24, 105), rgb(30, 24, 105), rgb(74, 15, 82));
+      background-repeat: no-repeat;
+      background-size: 100% 100%;
+      background-attachment: fixed;
+      margin: 0px;
+    }
+
+
+    table{
+      width: 100%;
+    }
+
+    table,
+    th,
+    td {
+      font-size: 23px;
+      text-align: center;
+      color: wheat;
+      border: 3px solid black;
+      border-collapse: collapse;
+    }
+
+    td{
+      width: 50%;
+    }
+
+  </style>
+</head>
+<body>
+<div class="ticketsInformation">
+  <table class="table">
+    <tr>
+      <td colspan="2">Bus ticket</td>
+    </tr>
+    <tr>
+      <td>Ticket Id</td>
+      <td th:text="*{history.get().getTicketId().id}"></td>
+    </tr>
+    <tr>
+      <td>Name</td>
+      <td th:text="*{history.get().name}"></td>
+    </tr>
+    <tr>
+      <td>Gender</td>
+      <td th:text="*{history.get().gender}"></td>
+    </tr>
+    <tr>
+      <td>Origin</td>
+      <td th:text="*{history.get().getTicketId().origin}"></td>
+    </tr>
+    <tr>
+      <td>Destination</td>
+      <td th:text="*{history.get().getTicketId().destination}"></td>
+    </tr>
+    <tr>
+      <td>Departure date</td>
+      <td th:text="*{history.get().getTicketId().departureDate}"></td>
+    </tr>
+    <tr>
+      <td>Departure time</td>
+      <td th:text="*{history.get().getTicketId().departureTime}"></td>
+    </tr>
+    <tr>
+      <td>Travel id</td>
+      <td th:text="*{history.get().travelNum}"></td>
+    </tr>
+    <tr>
+      <td colspan="2">
+        <form action="#" th:action="@{/cancel-ticket}" method="post">
+          <input type="hidden" name="id" th:value="${history.get().id}">
+          <input type="submit" value="Cancel ticket">
+        </form>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
