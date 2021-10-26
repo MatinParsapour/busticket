@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="">
+<head>
+    <meta charset="UTF-8">
+    <title>Bought</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            background-image: linear-gradient(rgb(74, 15, 82), rgb(30, 24, 105), rgb(30, 24, 105), rgb(74, 15, 82));
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            background-attachment: fixed;
+            margin: 0px;
+        }
+
+        #customer-information {
+            position: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 20%;
+            left: 35%;
+            transform: translate(-50%, -50%);
+            height: 250px;
+            width: 70%;
+            background-color: rgba(85, 18, 161);
+            margin-left: 15%;
+            margin-top: 5%;
+            border-radius: 5px 5px;
+        }
+
+        .mainFormToBuyTicket {
+            width: 60%;
+        }
+
+
+        .button {
+            border-radius: 5px 5px;
+            margin-top: 10%;
+            width: 167%;
+            height: 50px;
+        }
+
+        .greenButton {
+            background-color: rgb(73, 117, 73);
+        }
+
+    </style>
+</head>
+<body>
+<div id="customer-information">
+    <div class="buyTicketForm" th:object="${customerIs}">
+        <div th:switch="${customerIs.gender}">
+            <div th:case="male">
+                <p>Mr <span th:text="${customerIs.getName()}"></span> your ticket successfully has bought</p>
+            </div>
+            <div th:case="female">
+                <p>Miss <span th:text="${customerIs.getName()}"></span> your ticket successfully has bought</p>
+            </div>
+        </div>
+        <form action="/" class="mainFormToBuyTicket">
+            <input class="button greenButton" type="submit" value="Back to home">
+        </form>
+    </div>
+</div>
+</body>
+</html>
